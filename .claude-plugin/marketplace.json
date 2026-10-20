@@ -1,0 +1,15 @@
+{
+  "name": "cuvama",
+  "description": "Free value selling plugins from Cuvama",
+  "owner": {
+    "name": "Cuvama",
+    "url": "https://www.cuvama.com"
+  },
+  "plugins": [
+    {
+      "name": "cuvama-value-selling",
+      "source": "./plugins/cuvama-value-selling",
+      "description": "Set up your value proposition once, then build value hypotheses and business cases that your whole team saves to one shared SharePoint folder."
+    }
+  ]
+}

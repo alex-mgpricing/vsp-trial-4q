@@ -1,0 +1,8 @@
+{
+  "name": "cuvama-value-selling",
+  "displayName": "Cuvama Value Selling",
+  "version": "0.1.0",
+  "description": "Set up your value proposition once, then build value hypotheses and business cases that your whole team saves to one shared SharePoint folder.",
+  "author": { "name": "Cuvama", "url": "https://www.cuvama.com" },
+  "license": "MIT"
+}
