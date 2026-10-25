@@ -89,7 +89,11 @@ Then save `<Account> - Business Case.xlsx`. Build it with openpyxl in code, as t
 
 All of these are live formulas, so the sheet recalculates if someone changes an input.
 
-Keep the file small: bold headers only, no other styling, no images.
+Keep the file as small as possible, because every extra kilobyte slows the save:
+- numbers and short labels only, with no evidence, notes or questions text
+- bold headers only, no other styling, no images
+
+Before you start the upload, tell the user in one line: "Saving the spreadsheet to SharePoint, this takes a minute or two."
 
 How to upload the Excel file:
 
@@ -104,6 +108,9 @@ If writes aren't allowed at all, say their Claude admin needs to allow Microsoft
 
 Keep the reply short:
 
-- Headline figures: annual benefit, net value over the period, ROI and payback, in the profile's currency, rounded to whole units.
+- Headline figures, shown exactly as stored in the deal file so they never differ between conversations:
+  - annual benefit and net value over the period, in the profile's currency, in whole units
+  - ROI to one decimal place
+  - payback in months to one decimal place
 - Which numbers are still typical rather than the customer's own.
 - Links to the deal file and the Excel file.

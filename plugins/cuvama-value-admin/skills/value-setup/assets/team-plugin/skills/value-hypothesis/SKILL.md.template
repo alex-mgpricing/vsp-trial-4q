@@ -70,26 +70,14 @@ Save `<slug>.deal.json`:
 }
 ```
 
-Then save `<Account> - Value Hypothesis.xlsx`. Build it with openpyxl in code. It has one sheet, "Hypothesis", laid out as follows:
-
-- One row per input, with columns Driver, Evidence, Input, Unit, Value, Source.
-- Under each driver, a row "Annual value" with a live `=PRODUCT(...)` formula over that driver's Value cells.
-- A "Total" row with `=SUM(...)` of the driver rows.
-- Then a "Questions to ask" list.
-
-Keep the file small: bold headers only, no other styling, no images.
+Don't build a spreadsheet at this stage, because saving one takes a couple of minutes. The business case skill builds the spreadsheet. If the user asks for a hypothesis spreadsheet, build it the same way as the business case spreadsheet: numbers only, with live formulas.
 
 How to save:
 
 - **JSON**:
   - New file: `sharepoint_upload_file` with `content`, the folder's `driveId` and `parentItemId`.
   - Existing file: `sharepoint_update_file` with its item id. Never create a second copy.
-- **Excel**:
-  - In the same code run that builds the file, print its exact byte length and its base64 text.
-  - Upload with `contentBase64`, copied exactly as printed, and `expectedBytes`. Use `sharepoint_update_file` if the file already exists.
-  - If the upload is refused, rebuild and retry once.
-  - If it still fails, give the user the file as a download and ask them to drop it into the folder.
-- **If writes aren't allowed**: say their Claude admin needs to allow Microsoft 365 write actions. Offer both files as downloads to drop into the folder by hand.
+- **If writes aren't allowed**: say their Claude admin needs to allow Microsoft 365 write actions. Offer the file as a download to drop into the folder by hand.
 
 ## 5. Reply
 
@@ -97,5 +85,5 @@ Keep the reply short:
 
 - 3 to 5 bullets covering the drivers that apply and the indicative annual value. Say clearly which numbers are typical rather than the customer's own.
 - The questions to ask next.
-- Links to both files.
+- A link to the deal file.
 - "When you have the numbers, ask me to build the business case for <Account>."

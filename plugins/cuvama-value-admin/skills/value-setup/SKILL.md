@@ -23,7 +23,19 @@ The leader uploads the team plugin and shares it with their team. Sellers never 
 
 You need the Microsoft 365 connector. If it isn't available, stop and say: "I need your Microsoft 365 connection to save your team's files. Turn it on under Customize > Connectors, then ask me again."
 
-## 2. Ask two things, in one message
+## 2. Updating, or regenerating the team plugin?
+
+If the admin wants to change an existing profile or rebuild the team plugin, first look for the existing profile:
+
+1. Run `sharepoint_search` for `cuvama-value-profile.json`.
+2. If you find exactly one, read it and use its `storage` details (`driveId`, `folderItemId`, `folderLink`). Don't ask for the folder again.
+   - **To update the profile:** go to step 5, then save in place (step 6). A new team plugin isn't needed.
+   - **To regenerate the team plugin:** go straight to step 7, using the profile's company name, currency and storage details. Do no research.
+3. If you find none or several, ask for the folder link as in step 3.
+
+For a first-time setup, continue with step 2b.
+
+## 2b. Ask two things, in one message
 
 Say, in your own words:
 
@@ -132,7 +144,7 @@ Build the team plugin in code.
 Reply briefly, with these three steps:
 
 1. **Install your team's plugin**: download the file above, then in Claude go to **Customize > Plugins > Add > Upload plugin** and choose it. If you already have one from an earlier setup, it updates.
-2. **Share it**: open **Cuvama Value Selling - {company}** in Customize > Plugins and choose **Share**. Add your team.
+2. **Share it**: open **Cuvama Value Selling - {company}** in Customize > Plugins and choose **Share**. Add your team. Let them know that the first time Claude saves a file, it asks permission to use SharePoint. They should choose **Always allow**.
 3. **Give your team access to the folder** in SharePoint, if they don't have it already: {folder link}.
 
 Then add: "Your sellers can now paste call notes and ask for a value hypothesis. If you change the profile later, just ask me to update it. You only need a new team plugin if you move the folder."
