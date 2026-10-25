@@ -9,7 +9,12 @@
     {
       "name": "cuvama-value-admin",
       "source": "./plugins/cuvama-value-admin",
-      "description": "For value and sales leaders: set up your company's value profile and generate a value selling plugin for your team."
+      "description": "For value and sales leaders: set up your company's value profile and where your team's files live."
+    },
+    {
+      "name": "cuvama-value-selling",
+      "source": "./plugins/cuvama-value-selling",
+      "description": "For sellers: value hypotheses and business cases from call notes, saved to your team's SharePoint folder."
     }
   ]
 }

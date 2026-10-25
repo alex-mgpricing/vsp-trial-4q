@@ -1,0 +1,8 @@
+{
+  "name": "cuvama-value-selling",
+  "displayName": "Cuvama Value Selling",
+  "version": "0.4.0",
+  "description": "For sellers: turn call notes into a value hypothesis and a business case, using your company's value profile and saving to your team's SharePoint folder.",
+  "author": { "name": "Cuvama", "url": "https://www.cuvama.com" },
+  "license": "MIT"
+}

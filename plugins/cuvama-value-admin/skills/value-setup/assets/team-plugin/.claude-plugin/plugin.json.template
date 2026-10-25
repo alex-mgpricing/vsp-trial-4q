@@ -1,8 +1,0 @@
-{
-  "name": "cuvama-value-selling",
-  "displayName": "Cuvama Value Selling - {{COMPANY_NAME}}",
-  "version": "{{VERSION}}",
-  "description": "Value hypotheses and business cases for {{COMPANY_NAME}} sellers, built on your company's value profile and saved to your team's SharePoint folder.",
-  "author": { "name": "Cuvama", "url": "https://www.cuvama.com" },
-  "license": "MIT"
-}

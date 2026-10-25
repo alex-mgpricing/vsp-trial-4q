@@ -1,10 +1,8 @@
-# Cuvama plugins for Claude
+# Cuvama plugins for Claude (trial)
 
 ## Install
 
-In Claude, go to **Customize > Plugins > Add > Add marketplace**, paste this page's
-address, then add **Cuvama Value Selling**.
+In Claude, go to **Customize > Plugins > Add > Add marketplace** and paste this repository's address.
 
-Then say **"set up Cuvama value selling"** in a new chat.
-
-See [plugins/cuvama-value-selling/README.md](plugins/cuvama-value-selling/README.md) for details.
+- Value leaders: add **Cuvama Value Selling - Admin**, then say "set up Cuvama value selling".
+- Sellers: add **Cuvama Value Selling**, then paste call notes and ask for a value hypothesis.

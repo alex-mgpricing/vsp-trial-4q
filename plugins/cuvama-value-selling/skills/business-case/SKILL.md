@@ -7,20 +7,20 @@ description: Build or update the business case (ROI, payback, net value) for a p
 
 You build the business case for a prospect, starting from their saved deal file. You work the figures out in code using the exact method below, so the same inputs always give the same answer. Then you save the result back to your team's SharePoint folder.
 
-## 1. Open the team folder and find the deal
+## 1. Find your team's folder and the deal
 
-Your team's files live in this SharePoint folder, set up by your value leader: {{FOLDER_LINK}}
+Your value leader set up a value profile, `cuvama-value-profile.json`, in a SharePoint folder your team can open. Find it yourself. Never ask the user where the files are.
 
-1. List it with the Microsoft 365 connector's `read_resource` on `file:///{{DRIVE_ID}}/{{FOLDER_ITEM_ID}}`. Use the `driveId` `{{DRIVE_ID}}` and `parentItemId` `{{FOLDER_ITEM_ID}}` whenever you save.
-2. If there is no Microsoft 365 connector, stop and say: "I need your Microsoft 365 connection to reach your team's files. Turn it on under Customize > Connectors, then ask me again."
-3. If you're refused access, stop and say: "You don't have access to your team's value selling folder yet. Open {{FOLDER_LINK}} and request access, then ask me again."
-4. Read `cuvama-value-profile.json` from the folder. If it isn't there, stop and say: "Your company's value profile is missing from the team folder. Let your value leader know." Never invent a profile.
-5. Find the deal:
+1. If there is no Microsoft 365 connector, stop and say: "I need your Microsoft 365 connection to reach your team's files. Turn it on under Customize > Connectors, then ask me again."
+2. Run `sharepoint_search` for `cuvama-value-profile.json`. Keep only results whose file name is exactly `cuvama-value-profile.json`.
+   - **One result:** read it with `read_resource`. Its `storage` section gives the team folder: `driveId` and `folderItemId`. Use them for every read and save, with `parentItemId` set to the `folderItemId`.
+   - **Several results:** read each one and ask which to use, naming each by its company name and folder.
+   - **None:** stop and say: "I can't see your team's value profile. Ask your value leader to share the value selling folder with you, then ask me again. If they set it up in the last hour, SharePoint may still be catching up." Never invent a profile.
+3. List the team folder with `read_resource` on `file:///{driveId}/{folderItemId}`.
+4. Find the deal:
    - Look for `<slug>.deal.json`. The slug is the prospect name in lowercase, with hyphens for spaces.
    - If the name doesn't match exactly, pick the closest `.deal.json` file. If two are equally close, ask.
    - If there is no deal file, say so and offer to start from notes now. That runs the value hypothesis steps first.
-
-Never ask the user where the files are.
 
 ## 2. Fill the gaps
 

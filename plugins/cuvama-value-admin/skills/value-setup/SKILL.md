@@ -1,6 +1,6 @@
 ---
 name: value-setup
-description: Set up or update a company's Cuvama value selling - its value profile, the SharePoint folder the team saves to, and the team plugin sellers use. Use when someone asks to "set up Cuvama value selling", "set up our value profile", "update our value drivers", "regenerate the team plugin", or is a value, sales or enablement leader getting their team started with value selling in Claude.
+description: Set up or update a company's Cuvama value selling - its value profile and the SharePoint folder the team saves to. Use when someone asks to "set up Cuvama value selling", "set up our value profile", "update our value drivers", or is a value, sales or enablement leader getting their team started with value selling in Claude.
 ---
 
 # Value setup (admin)
@@ -8,10 +8,9 @@ description: Set up or update a company's Cuvama value selling - its value profi
 You help a value leader get their team started:
 
 1. You agree where the team's files will live.
-2. You draft the company's **value profile** from its website.
-3. You build a **team plugin** that already knows where the files live.
+2. You draft the company's **value profile** from its website and save it there.
 
-The leader uploads the team plugin and shares it with their team. Sellers never need to know where the files are.
+The profile records where the folder is. The sellers' plugin, **Cuvama Value Selling**, finds the profile by searching SharePoint, so sellers never need to know where the files are.
 
 **Keep it quick and easy.**
 - Do the research yourself.
@@ -23,14 +22,12 @@ The leader uploads the team plugin and shares it with their team. Sellers never 
 
 You need the Microsoft 365 connector. If it isn't available, stop and say: "I need your Microsoft 365 connection to save your team's files. Turn it on under Customize > Connectors, then ask me again."
 
-## 2. Updating, or regenerating the team plugin?
+## 2. Updating an existing profile?
 
-If the admin wants to change an existing profile or rebuild the team plugin, first look for the existing profile:
+If the admin wants to change an existing profile, first look for it:
 
 1. Run `sharepoint_search` for `cuvama-value-profile.json`.
-2. If you find exactly one, read it and use its `storage` details (`driveId`, `folderItemId`, `folderLink`). Don't ask for the folder again.
-   - **To update the profile:** go to step 5, then save in place (step 6). A new team plugin isn't needed.
-   - **To regenerate the team plugin:** go straight to step 7, using the profile's company name, currency and storage details. Do no research.
+2. If you find exactly one, read it and use its `storage` details (`driveId`, `folderItemId`, `folderLink`). Don't ask for the folder again. Go to step 5, then save in place (step 6).
 3. If you find none or several, ask for the folder link as in step 3.
 
 For a first-time setup, continue with step 2b.
@@ -120,31 +117,12 @@ How to save:
 - **New file**: use `sharepoint_upload_file` with `content` (plain text), the `driveId` and `parentItemId` set to the folder's item id.
 - **Existing profile**: use `sharepoint_update_file` with the file's item id. Never create a second copy.
 - **If the save is refused** because writes aren't allowed: tell the admin their Claude admin needs to allow Microsoft 365 write actions, then stop.
-
-## 7. Build the team plugin
-
-Build the team plugin in code.
-
-1. **Find the template.** It is in this skill's folder at `assets/team-plugin/`, so look in `${CLAUDE_SKILL_DIR}/assets/team-plugin`. If that isn't set, find the folder with `find / -type d -path '*value-setup/assets/team-plugin' 2>/dev/null`.
-2. **Copy it** to a working folder.
-3. **Fill in every `.template` file.** Replace these placeholders, then drop the `.template` ending from each file name:
-   - `{{COMPANY_NAME}}`: the company name
-   - `{{FOLDER_LINK}}`: the link the admin gave
-   - `{{DRIVE_ID}}`: the drive id
-   - `{{FOLDER_ITEM_ID}}`: the folder's item id
-   - `{{CURRENCY}}`: the currency
-   - `{{GENERATED_AT}}`: today's date
-   - `{{VERSION}}`: `1.0.<YYYYMMDDHHMM>` from the current time, so each new build counts as an update
-4. **Check** that no `{{` is left in any file.
-5. **Zip the folder's contents**, so that `.claude-plugin/plugin.json` sits at the top of the archive. Name the zip `cuvama-value-selling-<company-slug>.zip`, where the slug is the lowercase company name with hyphens.
-6. **Offer the zip** as a download.
-
-## 8. Finish
+## 7. Finish
 
 Reply briefly, with these three steps:
 
-1. **Install your team's plugin**: download the file above, then in Claude go to **Customize > Plugins > Add > Upload plugin** and choose it. If you already have one from an earlier setup, it updates.
-2. **Share it**: open **Cuvama Value Selling - {company}** in Customize > Plugins and choose **Share**. Add your team. Let them know that the first time Claude saves a file, it asks permission to use SharePoint. They should choose **Always allow**.
-3. **Give your team access to the folder** in SharePoint, if they don't have it already: {folder link}.
+1. **Give your team access to the folder** in SharePoint, if they don't have it already: {folder link}.
+2. **Get your team the sellers' plugin, Cuvama Value Selling.** Either share it with them from **Customize > Plugins** (open it, then **Share**), or they add it themselves from the same place you got this one.
+3. **Tell them** that the first time Claude saves a file, it asks permission to use SharePoint. They should choose **Always allow**.
 
-Then add: "Your sellers can now paste call notes and ask for a value hypothesis. If you change the profile later, just ask me to update it. You only need a new team plugin if you move the folder."
+Then add: "Your sellers can now paste call notes and ask for a value hypothesis. SharePoint can take up to an hour to make a new profile findable, so if someone tries straight away and Claude can't see it, wait a little. If you change the profile later, just ask me to update it."
