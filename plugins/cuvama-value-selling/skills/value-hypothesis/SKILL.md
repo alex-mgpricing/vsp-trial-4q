@@ -1,6 +1,6 @@
 ---
 name: value-hypothesis
-description: Build a value hypothesis for a prospect from discovery call notes, using the company's Cuvama value profile, and save it to the team's shared folder. Use when a seller, pre-sales or value person shares call or meeting notes, asks to prep for or follow up on a prospect call, asks "why would <prospect> buy", or asks for a value hypothesis or the value drivers for a deal.
+description: Build a value hypothesis for a prospect from discovery call notes, using the company's Cuvama value profile, and save it to the team's shared folder. Use when a seller, pre-sales or value person shares call or meeting notes, asks to prep for or follow up on a prospect call, asks "why would a prospect buy", or asks for a value hypothesis or the value drivers for a deal.
 ---
 
 # Value hypothesis

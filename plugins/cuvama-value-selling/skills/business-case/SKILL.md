@@ -1,6 +1,6 @@
 ---
 name: business-case
-description: Build or update the business case (ROI, payback, net value) for a prospect, starting from the value hypothesis saved in the team's Cuvama Value Selling folder. Use when a seller asks to "build the business case for <prospect>", "what's the ROI for <prospect>", "update the numbers for <prospect>", or wants a CFO-ready value summary for a deal.
+description: Build or update the business case (ROI, payback, net value) for a prospect, starting from the value hypothesis saved in the team's Cuvama Value Selling folder. Use when a seller asks to "build the business case for a prospect", "what's the ROI for a prospect", "update the numbers for a prospect", or wants a CFO-ready value summary for a deal.
 ---
 
 # Business case
