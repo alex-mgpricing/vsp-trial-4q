@@ -1,7 +1,7 @@
 {
   "name": "cuvama-value-admin",
   "displayName": "Cuvama Value Selling - Admin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "For value and sales leaders: set up your company's value profile in minutes and generate a value selling plugin for your team, saving everything to your own SharePoint folder.",
   "author": { "name": "Cuvama", "url": "https://www.cuvama.com" },
   "license": "MIT"

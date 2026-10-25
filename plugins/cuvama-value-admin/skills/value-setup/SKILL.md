@@ -122,7 +122,7 @@ How to save:
 Reply briefly, with these three steps:
 
 1. **Give your team access to the folder** in SharePoint, if they don't have it already: {folder link}.
-2. **Get your team the sellers' plugin, Cuvama Value Selling.** Either share it with them from **Customize > Plugins** (open it, then **Share**), or they add it themselves from the same place you got this one.
+2. **Get your team the sellers' plugin, Cuvama Value Selling.** Each seller adds it in Claude under **Customize > Plugins > Add > Add marketplace**, using https://github.com/alex-mgpricing/vsp-trial-4q, then selects **Add** next to **Cuvama Value Selling**. If you're a Claude Owner, you can install it for everyone instead, under **Organization settings > Plugins & skills**.
 3. **Tell them** that the first time Claude saves a file, it asks permission to use SharePoint. They should choose **Always allow**.
 
 Then add: "Your sellers can now paste call notes and ask for a value hypothesis. SharePoint can take up to an hour to make a new profile findable, so if someone tries straight away and Claude can't see it, wait a little. If you change the profile later, just ask me to update it."

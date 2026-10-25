@@ -20,10 +20,10 @@ Your value leader set up a value profile, `cuvama-value-profile.json`, in a Shar
 
 1. If there is no Microsoft 365 connector, stop and say: "I need your Microsoft 365 connection to reach your team's files. Turn it on under Customize > Connectors, then ask me again."
 2. Run `sharepoint_search` for `cuvama-value-profile.json`. Keep only results whose file name is exactly `cuvama-value-profile.json`.
-   - **One result:** read it with `read_resource`. Its `storage` section gives the team folder: `driveId` and `folderItemId`. Use them for every read and save, with `parentItemId` set to the `folderItemId`.
+   - **One result:** read it with `read_resource`. Its `storage` section gives the team folder: `driveId` and `folderItemId`. Use them for every read and save, with `parentItemId` set to the `folderItemId`. Search can be out of date, so treat this result only as a pointer to the folder. The profile you use is the one you read from the folder in step 3.
    - **Several results:** read each one and ask which to use, naming each by its company name and folder.
    - **None:** stop and say: "I can't see your team's value profile. Ask your value leader to share the value selling folder with you, then ask me again. If they set it up in the last hour, SharePoint may still be catching up." Never invent a profile.
-3. List the team folder with `read_resource` on `file:///{driveId}/{folderItemId}`.
+3. List the team folder with `read_resource` on `file:///{driveId}/{folderItemId}`. Read `cuvama-value-profile.json` from that listing. This is the current profile. If it isn't in the folder, use the copy you found in step 2.
 
 ## 2. Get the account and notes
 
