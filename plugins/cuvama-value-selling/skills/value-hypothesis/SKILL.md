@@ -20,8 +20,8 @@ All files live in one SharePoint folder named exactly **Cuvama Value Selling**.
 
 1. Search with the Microsoft 365 connector's `sharepoint_folder_search` using the name `Cuvama Value Selling`.
 2. If there is no Microsoft 365 connector, stop and say: "I can't reach SharePoint. Connect Microsoft 365 under Customize > Connectors, then ask me again."
-3. If there is one match, use it. If there are several, show each one's site and path and ask which one.
-4. If there are none, ask the user for the folder's link. If they don't have it, they should ask their value leader to share it.
+3. Ignore results that aren't a folder named exactly `Cuvama Value Selling`, because search also returns files and loose matches. If there is one exact match, use it. If there are several, show each one's site and path and ask which one.
+4. If there are none, ask the user to paste the folder's link from their browser, then open it as described in the appendix below. SharePoint's search can take hours to see a new folder. If they don't have the link, they should ask their value leader.
 5. List the folder with `read_resource` on its URI, then read `cuvama-value-profile.json`.
    - If the profile isn't there, stop and say: "Your value profile hasn't been set up yet. Ask your value leader to say 'set up Cuvama value selling' in Claude."
    - Never invent a profile.
@@ -102,3 +102,15 @@ Keep the reply short:
 - The questions to ask next.
 - Links to both files.
 - "When you have the numbers, ask me to build the business case for <Account>."
+
+## Appendix: opening the folder from its link
+
+The Microsoft 365 connector can't open web links directly. To turn a link like `https://contoso.sharepoint.com/sites/Sales/Shared%20Documents/Projects/Cuvama%20Value%20Selling` into something you can read and save into:
+
+1. Decode the link (`%20` is a space) and split it into three parts:
+   - **Site address**: up to and including the site name (`https://contoso.sharepoint.com/sites/Sales`).
+   - **Library**: the next part (`Shared Documents`).
+   - **Folder path**: the rest (`Projects/Cuvama Value Selling`).
+2. Find the library's drive id. Run `sharepoint_search` for a word from the folder path, with `folderName` set to the parent folder's name if there is one. Pick any result whose `webUrl` starts with the site address followed by the library name, and take its `driveId`. If nothing matches, try other words likely to appear in that site's documents, up to 3 tries.
+3. List the parent folder with `read_resource` on `file:///{driveId}/{parent folder path}`. The path never includes the library name. Find the Cuvama Value Selling entry: its URI ends with the folder's item id, which you need as `parentItemId` when saving.
+4. List the folder with `read_resource` on its URI. An empty folder returns nothing, which is fine.
