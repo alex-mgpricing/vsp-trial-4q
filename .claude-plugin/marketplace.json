@@ -7,9 +7,9 @@
   },
   "plugins": [
     {
-      "name": "cuvama-value-selling",
-      "source": "./plugins/cuvama-value-selling",
-      "description": "Set up your value proposition once, then build value hypotheses and business cases that your whole team saves to one shared SharePoint folder."
+      "name": "cuvama-value-admin",
+      "source": "./plugins/cuvama-value-admin",
+      "description": "For value and sales leaders: set up your company's value profile and generate a value selling plugin for your team."
     }
   ]
 }
